@@ -1,0 +1,18 @@
+.headerContainer {
+    display: flex;
+    gap: 2rem;
+    margin-top: .5rem;
+    justify-content: center;
+    
+}
+
+.inventoryTitle {
+    text-align: left;
+    width: 20rem;
+    font-size: 4.5rem;
+}
+
+.carImage {
+    height: 15rem;
+    width: 26rem;
+}

@@ -1,0 +1,27 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header"
+    "navbar main main main"
+    "footer footer footer footer";
+}
+
+.headerWrapper {
+  grid-area: header;
+  justify-self: center;
+  border: 1px solid purple;
+}
+
+.mainWrapper {
+  grid-area: main;
+}
+
+.navWrapper {
+  grid-area: navbar;
+}
+
+.footerWrapper {
+  grid-area: footer;
+}

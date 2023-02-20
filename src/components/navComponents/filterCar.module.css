@@ -1,0 +1,11 @@
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
+.filterInput {
+  margin: 0.25rem;
+}
