@@ -11,7 +11,9 @@
 .headerWrapper {
   grid-area: header;
   justify-self: center;
-  border: 1px solid purple;
+  padding: 1rem;
+  border: 5px solid darkgray;
+  border-radius: 20px;
 }
 
 .mainWrapper {

@@ -1,0 +1,22 @@
+.cardContainer {
+    display: flex;
+    margin-left: 5.2rem;
+    gap: 1rem;
+}
+
+.carInfoCard {
+    width: 10rem;
+    height: 12rem;
+    padding: .5rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.cardButton {
+    transition: .25s;
+}
+
+.cardButton:active {
+    transform: translateY(5px);
+}
