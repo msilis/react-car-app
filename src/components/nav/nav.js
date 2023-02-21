@@ -9,14 +9,14 @@ export default function NavSidebar(props) {
   const setCarAdded = props.setCarAdded;
   const carUpdated = props.carUpdated;
   const setCarUpdated = props.setCarUpdated;
-  const carYear = props.carYear;
-  const setCarYear = props.setCarYear;
+  const filteredCars = props.filteredCars;
+  const setFilteredCars = props.setFilteredCars
 
   return (
     <div className={style.sidebarContainer}>
       <AddCar carAdded={carAdded} setCarAdded={setCarAdded} />
       <EditMultiple carUpdated={carUpdated} setCarUpdated={setCarUpdated} />
-      <FilterCar carYear={carYear} setCarYear={setCarYear}/>
+      <FilterCar filteredCars={filteredCars} setFilteredCars={setFilteredCars}/>
     </div>
   );
 }

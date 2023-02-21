@@ -20,7 +20,6 @@ export default function CardContainer(props) {
   //Props filtered cars
   const filteredCars = props.filteredCars;
   const setFilteredCars = props.setFilteredCars;
-  
 
   function handleButtonClick(event) {
     //grab target of click event
@@ -55,27 +54,39 @@ export default function CardContainer(props) {
     }
   }
 
-  //Function to cancel filtered display
-  function handleFilterCancel(){
-    setFilteredCars([])
-  }
-
   //function to render filtered cars
 
   const filteredCarsInfo = Object.values(filteredCars).map((car, index) => {
-    return(
+    return (
       <div id={car.id} key={index} className={style.carInfoCard}>
         <div className={style.infoCardText}>
           <h3>{car.make}</h3>
           <h4>{car.modelYear}</h4>
           <h4>{car.currentOwner}</h4>
         </div>
-        <div>
-          <button onClick={handleFilterCancel}>Cancel</button>
+        <div className={style.infoCardButtons} onClick={handleButtonClick}>
+          <img
+            src={editIcon}
+            alt="Edit Icon"
+            id="edit"
+            className={style.cardButton}
+          />
+          <img
+            src={deleteIcon}
+            alt="Delete Icon"
+            id="delete"
+            className={style.cardButton}
+          />
+          <img
+            src={infoIcon}
+            alt="Info Icon"
+            id="info"
+            className={style.cardButton}
+          />
         </div>
-        </div>
-    )
-  })
+      </div>
+    );
+  });
 
   const carInfoCard = Object.values(carArray).map((car, index) => {
     return (
@@ -109,7 +120,9 @@ export default function CardContainer(props) {
     );
   });
 
-  
-
-  return <div className={style.cardContainer}>{filteredCars.length === 0 ? carInfoCard : filteredCarsInfo}</div>;
+  return (
+    <div className={style.cardContainer}>
+      {filteredCars.length === 0 ? carInfoCard : filteredCarsInfo}
+    </div>
+  );
 }

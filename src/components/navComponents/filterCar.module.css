@@ -9,3 +9,11 @@
 .filterInput {
   margin: 0.25rem;
 }
+
+.buttonHidden {
+  display: none;
+}
+
+.buttonVisible {
+  display: block;
+}

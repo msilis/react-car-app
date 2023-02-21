@@ -3,6 +3,8 @@ import style from "./filterCar.module.css";
 export default function FilterCar(props) {
   //pull in props from navbar
   const setFilteredCars = props.setFilteredCars;
+  const filteredCars = props.filteredCars;
+  console.log(filteredCars)
   
 
   //Function to take care of filter button being clicked
@@ -11,8 +13,8 @@ export default function FilterCar(props) {
     try {
       const response = await fetch("/cars/filter");
       const result = await response.json();
+      console.log(result)
       const filteredCarArray = result.map((car) => ({
-        id: car._id,
         modelYear: car.modelYear,
         make: car.make,
         currentOwner: car.currentOwner,
@@ -25,10 +27,18 @@ export default function FilterCar(props) {
     }
   }
 
+  //Function to reset filter view
+  function handleClearFilter(){
+    setFilteredCars([])
+  }
+
+  const clearButton = <button onClick={handleClearFilter}>Clear Filter</button>
+  const filterButton = <button onClick={handleFilterClick}>Filter</button>
+
   return (
     <div className={style.filterContainer}>
       <h3 className={style.filterText}>Show cars older than 5 years</h3>
-      <button onClick={handleFilterClick}>Filter</button>
+      {filteredCars.length === 0 ? filterButton : clearButton }
     </div>
   );
 }
