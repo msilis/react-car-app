@@ -1,7 +1,10 @@
 .cardContainer {
     display: flex;
-    margin-left: 5.2rem;
+    flex-wrap: wrap;
+    margin-left: 5rem;
     gap: 1rem;
+    width: 50rem;
+    margin-top: 2rem;
 }
 
 .carInfoCard {

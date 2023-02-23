@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import style from "./App.module.css";
 import CardContainer from "./components/cardContainer/cardContainer";
@@ -25,31 +26,39 @@ function App() {
   //Array of filtered cars
   const [filteredCars, setFilteredCars] = useState([]);
 
-  //Get list of cars from database on initial page load
+  //Fetch function to get list of cars
 
-  useEffect(() => {
-    async function getCars() {
-      try {
-        const response = await fetch("/cars");
-        const result = await response.json();
-        //Map result of fetch call to an array I can use in the page
-        const carArray = result.map((car) => ({
-          id: car._id,
-          modelYear: car.modelYear,
-          make: car.make,
-          currentOwner: car.currentOwner,
-          registration: car.registration,
-          address: car.address,
-        }));
-        //Set the array in state
-        setCurrentCars(carArray);
-      } catch (err) {
-        console.log({ message: err.message });
-      }
+  async function getCars() {
+    try {
+      const response = await fetch("/cars");
+      const result = await response.json();
+      //Map result of fetch call to an array I can use in the page
+      const carArray = result.map((car) => ({
+        id: car._id,
+        modelYear: car.modelYear,
+        make: car.make,
+        currentOwner: car.currentOwner,
+        registration: car.registration,
+        address: car.address,
+      }));
+      //Set the array in state
+      setCurrentCars(carArray);
+      setCarDeleted(false);
+      setCarAdded(false);
+      setCarUpdated(false);
+    } catch (err) {
+      console.log({ message: err.message });
     }
+  }
+
+  //Get list of cars from database on initial page load
+  useEffect(() => {
     //Call the function to get the list of cars from the database
+    console.log(carDeleted);
+    console.log(carUpdated);
+    console.log(carAdded);
     getCars();
-  }, [carAdded, carDeleted, carUpdated]);
+  }, [carUpdated, carAdded, carDeleted]);
 
   return (
     <div className={style.App}>
@@ -64,22 +73,18 @@ function App() {
           setCarUpdated={setCarUpdated}
           filteredCars={filteredCars}
           setFilteredCars={setFilteredCars}
-          
         />
       </div>
       <div className={style.mainWrapper}>
         <CardContainer
           carArray={currentCars}
-          carUpdated={carUpdated}
           setCarUpdated={setCarUpdated}
-          carDeleted={carDeleted}
           setCarDeleted={setCarDeleted}
           setShowEditModal={setShowEditModal}
           setCarId={setCarId}
           setShowInfoModal={setShowInfoModal}
           filteredCars={filteredCars}
           setFilteredCars={setFilteredCars}
-          
         />
       </div>
       <EditCarModal
@@ -88,7 +93,6 @@ function App() {
         carId={carId}
         carArray={currentCars}
         setCarUpdated={setCarUpdated}
-        carUpdated={carUpdated}
       />
       <InfoModal
         showInfoModal={showInfoModal}

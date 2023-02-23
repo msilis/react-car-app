@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./cardContainer.module.css";
 import editIcon from "../../media/icons8-pencil-30.png";
 import deleteIcon from "../../media/icons8-remove-30.png";
@@ -9,8 +10,6 @@ export default function CardContainer(props) {
   //Pull in the various states through props
 
   //Let React know car was deleted
-  const setCarDeleted = props.setCarDeleted;
-  const carDeleted = props.carDeleted;
   //Let React know edit button was clicked triggering modal
   const setShowEditModal = props.setShowEditModal;
   //Get ID of car to be edited so it can be sent to modal
@@ -19,7 +18,6 @@ export default function CardContainer(props) {
   const setShowInfoModal = props.setShowInfoModal;
   //Props filtered cars
   const filteredCars = props.filteredCars;
-  const setFilteredCars = props.setFilteredCars;
 
   function handleButtonClick(event) {
     //grab target of click event
@@ -29,7 +27,7 @@ export default function CardContainer(props) {
 
     if (buttonClick === "delete") {
       //toggle delete state so component re-renders
-      setCarDeleted(!carDeleted);
+      props.setCarDeleted(true);
       try {
         //Send car id to api with delete message
         fetch(`/cars/${carId}`, {
@@ -37,9 +35,7 @@ export default function CardContainer(props) {
           headers: {
             "content-type": "application/json",
           },
-        }).then((response) => {
-          console.log(response);
-        });
+        }).then((response) => console.log(response));
       } catch (err) {
         console.json({ message: err.message });
       }

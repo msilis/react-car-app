@@ -1,34 +1,38 @@
+/* Toggled state of modal */
 .infoModalHidden {
-    display: none;
+  display: none;
 }
 
 .infoModalVisible {
-    display: block;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.6);
+  display: block;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
+/* Modal style */
 .infoModalContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
-    width: 20rem;
-    height: 15rem;
-    background-color: azure;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10rem;
-    border-radius: 15px;
-    box-shadow: 5px 5px 5px black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+  width: 20rem;
+  height: 15rem;
+  background-color: azure;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px black;
 }
 
+/* Text at bottom leting user know they can click anywhere to close modal */
 .closeText {
-    color: white;
-    margin-top: 20rem;
-    text-align: center;
+  color: white;
+  margin-top: 20rem;
+  text-align: center;
 }

@@ -1,5 +1,7 @@
 .sidebarContainer {
     border: 5px solid darkgray;
     border-radius: 20px;
+    width: 20rem;
     box-shadow: 5px 5px 5px black;
+    margin-left: 2rem;
 }

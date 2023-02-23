@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef } from "react";
 import style from "./editCarModal.module.css";
 
@@ -12,7 +13,6 @@ export default function EditCarModal(props) {
   //Get ID of car which had edit button clicked
   const carId = props.carId;
   //Props for letting react know car was updated
-  const carUpdated = props.carUpdated;
   const setCarUpdated = props.setCarUpdated;
 
   //Handle cancel button being clicked, will set modal state to false
@@ -69,7 +69,7 @@ export default function EditCarModal(props) {
         .then((result) => result.json)
         .then((info) => console.log(info));
       //set state so list re-renders
-      setCarUpdated(!carUpdated);
+      setCarUpdated(true);
       //call cancel function so modal closes
       handleCancelClick();
     } catch (err) {

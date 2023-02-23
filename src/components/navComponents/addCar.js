@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef } from "react";
 import style from "./addCar.module.css";
 
@@ -11,11 +12,10 @@ export default function AddCar(props) {
   const newAddress = useRef();
 
   //State to keep track of car being added
-  const carAdded = props.carAdded;
   const setCarAdded = props.setCarAdded;
 
   function submitCarHandler() {
-
+    //Variable which will hold the data passed to the fetch statement
     const carData = {
       modelYear: newModelYear.current?.value,
       make: newMake.current?.value,
@@ -33,16 +33,14 @@ export default function AddCar(props) {
       })
         .then((result) => result.json)
         .then((info) => console.log(info));
-        //Toggle state to trigger re-render of cardContainer component
-        setCarAdded(!carAdded)
-        //Clear inputs after car has been added
-        newModelYear.current.value = "";
-        newMake.current.value = "";
-        newCurrentOwner.current.value = "";
-        newRegistration.current.value = "";
-        newAddress.current.value = "";
-
-
+      //Toggle state to trigger re-render of cardContainer component
+      setCarAdded(true);
+      //Clear inputs after car has been added
+      newModelYear.current.value = "";
+      newMake.current.value = "";
+      newCurrentOwner.current.value = "";
+      newRegistration.current.value = "";
+      newAddress.current.value = "";
     } catch (err) {
       console.json({ message: err.message });
     }
