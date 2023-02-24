@@ -54,9 +54,6 @@ function App() {
   //Get list of cars from database on initial page load
   useEffect(() => {
     //Call the function to get the list of cars from the database
-    console.log(carDeleted);
-    console.log(carUpdated);
-    console.log(carAdded);
     getCars();
   }, [carUpdated, carAdded, carDeleted]);
 
